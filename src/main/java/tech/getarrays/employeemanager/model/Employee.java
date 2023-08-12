@@ -2,6 +2,7 @@ package tech.getarrays.employeemanager.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 public class Employee implements Serializable {
@@ -16,16 +17,20 @@ public class Employee implements Serializable {
     private String imageUrl;
     @Column(nullable = false, updatable = false)
     private String employeeCode;
-
+    private EmploymentType employmentType;
+    @Temporal(TemporalType.DATE)
+    private Date startDate;
     public Employee() {}
 
-    public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
+    public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode, EmploymentType employmentType, Date startDate) {
         this.name = name;
         this.email = email;
         this.jobTitle = jobTitle;
         this.phone = phone;
         this.imageUrl = imageUrl;
         this.employeeCode = employeeCode;
+        this.employmentType = employmentType;
+        this.startDate = startDate;
     }
 
     public Long getId() {
@@ -92,7 +97,25 @@ public class Employee implements Serializable {
                 ", email='" + email + '\'' +
                 ", jobTitle='" + jobTitle + '\'' +
                 ", phone='" + phone + '\'' +
+                ", employmentType='" + employmentType + '\'' +
+                ", startDate='" + startDate + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 '}';
+    }
+
+    public EmploymentType getEmploymentType() {
+        return employmentType;
+    }
+
+    public void setEmploymentType(EmploymentType employmentType) {
+        this.employmentType = employmentType;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 }
