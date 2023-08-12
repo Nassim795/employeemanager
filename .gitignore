@@ -1,0 +1,32 @@
+# IDE files
+.idea/
+.vscode/
+
+# Compiled output
+target/
+*.class
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+build/
+
+# Eclipse
+.settings/
+.classpath
+.project
+
+# Intellij
+*.iml
+out/
+
+# Log files
+*.log
+
+# macOS
+.DS_Store
+
