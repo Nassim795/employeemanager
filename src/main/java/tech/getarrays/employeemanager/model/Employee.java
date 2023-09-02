@@ -1,8 +1,10 @@
 package tech.getarrays.employeemanager.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Employee implements Serializable {
@@ -18,11 +20,12 @@ public class Employee implements Serializable {
     @Column(nullable = false, updatable = false)
     private String employeeCode;
     private EmploymentType employmentType;
-    @Temporal(TemporalType.DATE)
-    private Date startDate;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @Column(nullable = false, updatable = false)
+    private LocalDate startDate;
     public Employee() {}
 
-    public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode, EmploymentType employmentType, Date startDate) {
+    public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode, EmploymentType employmentType, LocalDate startDate) {
         this.name = name;
         this.email = email;
         this.jobTitle = jobTitle;
@@ -111,11 +114,11 @@ public class Employee implements Serializable {
         this.employmentType = employmentType;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 }
